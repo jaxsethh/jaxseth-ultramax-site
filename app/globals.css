@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050510;
+  --foreground: #f8fafc;
+  --muted: #94a3b8;
+  --panel: rgba(255, 255, 255, 0.08);
+  --panel-border: rgba(255, 255, 255, 0.16);
+  --red: #ff244d;
+  --blue: #19c8ff;
+  --purple: #a855f7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(255, 36, 77, 0.35);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.glass {
+  background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 80px rgba(0,0,0,0.35);
+}
+
+.glow-text {
+  text-shadow: 0 0 35px rgba(255,36,77,0.55), 0 0 70px rgba(25,200,255,0.25);
+}
+
+.neon-border {
+  position: relative;
+}
+
+.neon-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,36,77,0.85), rgba(25,200,255,0.65), rgba(168,85,247,0.7));
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.card-shine {
+  background:
+    radial-gradient(circle at top left, rgba(255,36,77,0.22), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(25,200,255,0.16), transparent 35%),
+    linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
+}
+
+.button-primary {
+  background: linear-gradient(135deg, #ff244d, #a855f7, #19c8ff);
+  box-shadow: 0 15px 45px rgba(255,36,77,0.25);
+}
+
+.button-secondary {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+.input-premium {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  padding: 14px 16px;
+  color: #fff;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.input-premium:focus {
+  border-color: rgba(25,200,255,0.65);
+  box-shadow: 0 0 0 4px rgba(25,200,255,0.1);
+}
+
+.input-premium::placeholder {
+  color: rgba(226, 232, 240, 0.55);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .float-slow { animation: none; }
+}
